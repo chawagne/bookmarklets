@@ -5,6 +5,14 @@ $(document).on("click", function(e) {
     }
 });
 var hostname = window.location.hostname;
+
+
+$(".metrics").append('<tr><th>Git SHA</th><th><a href="https://github.com/pivotaltracker/tracker/commits/'+window.FRONTEND_FLAGS.git_sha+'" target="_blank">'+window.FRONTEND_FLAGS.git_sha.substr(0,8)+'</a></th></tr>');
+
+$.get('https://' + hostname + '/services/v5/me', function(data) {
+  $(".metrics").append('<tr><th>User ID</th><th>' + JSON.stringify(data.id) + '</th></tr>');
+});
+
 $.get('https://' + hostname + '/services/v5/me?fields=capabilities', function(data) {
     var capabilities = Object.keys(data.capabilities);
     console.log(capabilities);
