@@ -1,5 +1,5 @@
 //Get the document ready
-$("body").append('<div class="stats" style="width:350px"><h2 class="title">Testy - Your Testing Buddy</h2><table class="metrics" style="width:350px"></table>');
+$("body").append('<div class="stats" style="width:370px"><h2 class="title">Testy - Your Testing Buddy</h2><table class="metrics" style="width:370px"></table>');
 $(document).on("click", function(e) {
     if ($(e.target).parent().attr('class') === 'stats') {
         $(".stats").remove();
@@ -15,15 +15,16 @@ $(".metrics").append('<tr><th>Git SHA</th><th><a href="https://github.com/pivota
 $.get('https://' + hostname + '/services/v5/me?fields=capabilities,id,api_token', function(data) {
   $(".metrics").append('<tr><th>User ID</th><th>' + JSON.stringify(data.id) + '</th></tr>');
   $(".metrics").append('<tr><th>API Token</th><th>' + data.api_token + '</th></tr>');
-  console.log(data);
   var capabilities = Object.keys(data.capabilities);
   capabilities.map(function(item) {
       $(".metrics").append('<tr><th>Person Capability</th><th>' + item + '</th></tr>');
   });
 });
 
-//Display the project's capabilities
-$.get('https://' + hostname + '/services/v5/projects/' + window.location.pathname.split('/').pop() + '?fields=capabilities', function(data) {
+//Display the project's capabilities, account ID, and project id
+$.get('https://' + hostname + '/services/v5/projects/' + window.location.pathname.split('/').pop() + '?fields=capabilities,account_id,id', function(data) {
+    $(".metrics").append('<tr><th>Account ID</th><th>' + data.account_id + '</th></tr>');
+    $(".metrics").append('<tr><th>Project ID</th><th>' + data.id + '</th></tr>')
     var capabilities = Object.keys(data.capabilities);
     capabilities.map(function(item) {
         $(".metrics").append('<tr><th>Project Capability</th><th>' + item + '</th></tr>');
