@@ -3,7 +3,9 @@
 
 ## "Your testing buddy™"
 
-Testy is your tester's best friend and gets you the information you need!  
+Testy is your tester's best friend and gets you the information you need!
+
+### How-To
 
 Create a new bookmark and put the below script in the URL.
 ```
