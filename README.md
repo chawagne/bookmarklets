@@ -1,4 +1,3 @@
-# bookmarklets
 # Testy.JS
 
 ## "Your testing buddy™"
