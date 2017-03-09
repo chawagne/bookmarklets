@@ -13,7 +13,7 @@ var hostname = window.location.hostname;
 var templates = {
   "Markdown Template": 141337111,
   "Markdown Emoji Template": 141337107,
-  "Emoji Template": 141337105
+  "All Emoji Template": 141337105
 };
 
 //Display the templates
