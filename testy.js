@@ -52,18 +52,7 @@ $.get('https://' + hostname + '/services/v5/me?fields=capabilities,id,api_token'
         }
     });
     //  Display the user's project role
-    $.ajax({
-        type: "get",
-        url: 'https://' + hostname + '/services/v5/projects/' + window.location.pathname.split('/').pop() + '?fields=capabilities,account_id,id,memberships(role,person)',
-        success: function(result) {
-            result.memberships.forEach(function(item, index) {
-                if (item.person.id == userId) {
-                    projectRole = item.role;
-                }
-            });
-            $(".metrics").append('<tr><th>Project Role</th><th>' + projectRole + '</th></tr>');
-        }
-    });
+    requestProjectRole(hostname)
 });
 
 
@@ -118,4 +107,19 @@ function requestAccountRole(hostname, accountID, userID) {
             $(".metrics").append('<tr><th>Account Role</th><th>' + accountRole + '</th></tr>')
         }
     });
+}
+//Request and display a user's project role
+function requestProjectRole(hostname){
+  $.ajax({
+      type: "get",
+      url: 'https://' + hostname + '/services/v5/projects/' + window.location.pathname.split('/').pop() + '?fields=capabilities,account_id,id,memberships(role,person)',
+      success: function(result) {
+          result.memberships.forEach(function(item, index) {
+              if (item.person.id == userId) {
+                  projectRole = item.role;
+              }
+          });
+          $(".metrics").append('<tr><th>Project Role</th><th>' + projectRole + '</th></tr>');
+      }
+  });
 }
