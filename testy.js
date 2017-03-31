@@ -1,5 +1,5 @@
 //Get the document ready
-$("body").append('<div class="stats" style="width:370px"><h2 class="title">Testy - Your Testing Buddy</h2><table class="metrics" style="width:370px"></table>');
+$("body").append('<div class="stats" style="width:370px"><h2 class="title">Testy - Your Testing Bestie</h2><table class="metrics" style="width:370px"></table>');
 $(document).on("click", function(e) {
     if ($(e.target).parent().attr('class') === 'stats') {
         $(".stats").remove();
