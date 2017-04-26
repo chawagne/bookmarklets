@@ -19,7 +19,9 @@ var templates = {
 addTemplates(templates);
 
 //Display Command Queue control
-$(".metrics").append('<tr><th>Command Queue</th><th><a id="commandQueueControl" style="text-decoration: underline; color: blue;" onclick="commandQueueToggle()">Pause</a></th></tr>');
+var currentCommandQueue = "";
+!(tracker.CommandQueue.isPaused()) ? currentCommandQueue = "Pause" : currentCommandQueue = "Resume";
+$(".metrics").append('<tr><th>Command Queue</th><th><a id="commandQueueControl" style="text-decoration: underline; color: blue;" onclick="commandQueueToggle()">'+currentCommandQueue+'</a></th></tr>');
 
 
 var apiToken = "";
