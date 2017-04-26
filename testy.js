@@ -18,6 +18,10 @@ var templates = {
 //Display the templates
 addTemplates(templates);
 
+//Display Command Queue control
+$(".metrics").append('<tr><th>Command Queue</th><th><a id="commandQueueControl" style="text-decoration: underline; color: blue;" onclick="commandQueueToggle()">Pause</a></th></tr>');
+
+
 var apiToken = "";
 var userId = "";
 var projectRole = "";
@@ -56,6 +60,17 @@ $.get('https://' + hostname + '/services/v5/me?fields=capabilities,id,api_token'
 });
 
 
+//Pause/unpause Command Queue
+function commandQueueToggle () {
+  if (!(tracker.CommandQueue.isPaused())){
+    $("#commandQueueControl").text("Resume");
+    tracker.CommandQueue.pause();
+  }
+  else {
+    $("#commandQueueControl").text("Pause");
+    tracker.CommandQueue.resume();
+  }
+}
 
 //Add templates to the table with clickable links
 function addTemplates(templates) {
