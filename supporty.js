@@ -61,5 +61,38 @@ function scoreProjects(activityPerProject, weight) {
     var sorted = results.sort(function(a, b) {
         return b.score - a.score;
     });
-    console.log(sorted); //show results in the console
+    tableCreate(sorted);
+    //console.log(sorted); //show results in the console
 };
+
+
+function tableCreate(sortedProjects){
+    var body = document.body,
+        tbl  = document.createElement('table');
+    tbl.style.position = 'absolute';
+    tbl.style.left = '350px';
+    tbl.style.top = '50px';
+    tbl.style.zIndex = '999';
+    tbl.style.backgroundColor = '#ddd'
+
+    for(var i = 0; i < sortedProjects.length; i++){
+      if (!(sortedProjects[i] === undefined)){
+        var tr = tbl.insertRow();
+        for(var j = 0; j < 2; j++){
+                var td = tr.insertCell();
+              if (j===0){
+                td.appendChild(document.createTextNode(sortedProjects[i].name));
+                }
+              else {
+                td.appendChild(document.createTextNode(Math.round((sortedProjects[i].score/sortedProjects[0].score)*100)+"% of top project"));
+              }
+                td.style.border = '1px solid black';
+                td.style.fontSize = "20px"
+
+        }
+    }
+  }
+
+    body.appendChild(tbl);
+}
+
