@@ -2,7 +2,7 @@
 
 ## "Your testing bestie™"
 
-Testy is your tester's best friend and gets you the information you need!
+Testy is your tester's best friend and gets you the information you need!  This is a script intended to be used as a bookmarklet to help testers on the Pivotal Tracker team.  You can easily find behind the scenes IDs and run useful commands.  No more having to hunt around the DOM or craft cumbersome cURL commands.  
 
 ### How-To
 
