@@ -23,6 +23,11 @@ var currentCommandQueue = "";
 !(tracker.CommandQueue.isPaused()) ? currentCommandQueue = "Pause" : currentCommandQueue = "Resume";
 $(".metrics").append('<tr><th>Command Queue</th><th><a id="commandQueueControl" style="text-decoration: underline; color: blue;" onclick="commandQueueToggle()">'+currentCommandQueue+'</a></th></tr>');
 
+//Get project version
+var currentProjectVersion = tracker.Project.current().get('version')
+$(".metrics").append('<tr><th>Tracker Version</th><th><a id="projectVersion" style="text-decoration: underline; color: blue;" onclick="refreshProjectVersion()">'+currentProjectVersion+'</a></th></tr>');
+
+
 
 var apiToken = "";
 var userId = "";
@@ -139,4 +144,8 @@ function requestProjectRole(hostname){
           $(".metrics").append('<tr><th>Project Role</th><th>' + projectRole + '</th></tr>');
       }
   });
+}
+
+function refreshProjectVersion(){
+  document.getElementById('projectVersion').text=tracker.Project.current().get('version');
 }
